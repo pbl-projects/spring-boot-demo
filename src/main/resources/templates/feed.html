@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FEED</title>
+</head>
+<body>
+FEED
+
+<div>
+    <form th:action="@{/tweet}" method="POST">
+        <input type="text" id="content" name="content" placeholder="Tweet" /> <br/>
+
+        <div align="center" th:if="${param.error}">
+            <p style="font-size: 20; color: #FF1C19;">${param.error}</p>
+        </div>
+        <button name="Submit" value="Tweet" type="Submit"
+                th:text="Tweet"></button>
+    </form>
+</div>
+
+<div th:each="tweet : ${tweets}">
+    <span th:text="${tweet.content}"> Content </span></td>
+</div>
+
+</body>
+</html>

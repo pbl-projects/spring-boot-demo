@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>PROFILE</title>
+</head>
+<body>
+FEED
+
+<div th:each="tweet : ${tweets}">
+    <span th:text="${tweet.content}"> Content </span></td>
+</div>
+
+</body>
+</html>
