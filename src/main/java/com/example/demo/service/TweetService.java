@@ -5,12 +5,13 @@ import com.example.demo.model.Tweet;
 import com.example.demo.model.User;
 import com.example.demo.repository.TweetRepository;
 import com.example.demo.repository.UserRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.util.*;
 
 @Service
 public class TweetService {
@@ -28,9 +29,14 @@ public class TweetService {
 
     public List<Tweet> findAll() { return tweetRepository.findAll(); }
 
+    public List<Tweet> findInReverseOrder() {
+        return tweetRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
+    }
+
     public Tweet saveTweet(Tweet tweet, User currentUser) {
 
         tweet.setUser(currentUser);
+        tweet.setPostDate(Date.from(LocalDateTime.now().toInstant(ZoneOffset.of("+02:00"))));
 
         return tweetRepository.save(tweet);
     }

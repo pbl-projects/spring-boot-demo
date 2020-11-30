@@ -8,6 +8,8 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 @Builder
@@ -29,4 +31,8 @@ public class Tweet {
     @ManyToOne
     @JoinColumn(name="user_id", nullable=false)
     private User user;
+
+    @Column(name="post_date")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date postDate;
 }

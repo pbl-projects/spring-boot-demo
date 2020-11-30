@@ -5,8 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <title>PROFILE</title>
+    <link th:replace="fragments/header :: bootstrap-css">
 </head>
 <body>
+
+<div th:replace="fragments/header :: header">&nbsp;</div>
+
 FEED
 
 <div th:each="tweet : ${tweets}">

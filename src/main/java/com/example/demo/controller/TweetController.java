@@ -6,6 +6,7 @@ import com.example.demo.model.User;
 import com.example.demo.service.TweetService;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -34,7 +35,7 @@ public class TweetController {
     @RequestMapping(value="/feed", method = RequestMethod.GET)
     public ModelAndView feed(){
         ModelAndView modelAndView = new ModelAndView();
-        List<Tweet> tweets = tweetService.findAll();
+        List<Tweet> tweets = tweetService.findInReverseOrder();
         modelAndView.addObject("tweets", tweets);
         modelAndView.setViewName("feed");
         return modelAndView;

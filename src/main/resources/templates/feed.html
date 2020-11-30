@@ -5,8 +5,11 @@
 <head>
     <meta charset="UTF-8">
     <title>FEED</title>
+    <link th:replace="fragments/header :: bootstrap-css">
 </head>
 <body>
+<div th:replace="fragments/header :: header">&nbsp;</div>
+
 FEED
 
 <div>
@@ -24,6 +27,7 @@ FEED
 <div th:each="tweet : ${tweets}">
     <span th:text="${tweet.content}"> Content </span></td>
 </div>
+
 
 </body>
 </html>
